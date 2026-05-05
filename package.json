@@ -1,0 +1,38 @@
+{
+  "name": "vision-based-patient-behavior-analysis-system",
+  "private": true,
+  "version": "1.0.0",
+  "description": "视觉目标检测驱动的患者行为分析与跌倒预警系统",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:server": "node server/index.js",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "echarts": "^6.0.0",
+    "express": "^4.22.1",
+    "express-rate-limit": "^8.4.1",
+    "jsonwebtoken": "^9.0.3",
+    "lowdb": "^7.0.1",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.22.3",
+    "pinia": "^3.0.4",
+    "vue": "^3.5.13",
+    "vue-echarts": "^8.0.1",
+    "vue-i18n": "^11.4.0",
+    "vue-router": "^4.4.5",
+    "winston": "^3.19.0",
+    "ws": "^8.20.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "typescript": "~5.6.2",
+    "vite": "^6.0.3",
+    "vue-tsc": "^2.1.10"
+  }
+}
