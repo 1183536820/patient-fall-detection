@@ -62,7 +62,7 @@
 #### 1. 克隆项目
 ```bash
 git clone <repository-url>
-cd bisai4
+cd patient-fall-detection
 ```
 
 #### 2. 安装前端依赖

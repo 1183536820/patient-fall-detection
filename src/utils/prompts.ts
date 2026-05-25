@@ -9,7 +9,7 @@ export const PARAM_OPTIMIZATION_SYSTEM_PROMPT = `你是一个AI参数优化专�
   "reason": "简短的中文优化原因"
 }`
 
-export function buildParamOptimizationUserPrompt(detectionStats) {
+export function buildParamOptimizationUserPrompt(detectionStats: any) {
   return `请根据以下检测数据优化跌倒检测参数：
 - 总帧数: ${detectionStats.totalFrames}
 - 跌倒事件: ${detectionStats.fallEvents} 次

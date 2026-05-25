@@ -1897,6 +1897,19 @@ app.use('/falls_videos', (req, res, next) => {
   next()
 }, express.static(fallsVideosDir))
 
+// 生产模式：提供前端静态资源（SPA模式）
+const distDir = join(__dirname, '..', 'dist')
+if (fs.existsSync(distDir)) {
+  app.use(express.static(distDir))
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api') || req.path.startsWith('/uploads') || req.path.startsWith('/falls_videos')) {
+      return next()
+    }
+    res.sendFile(join(distDir, 'index.html'))
+  })
+  console.log(`[Server] 前端静态资源已加载: ${distDir}`)
+}
+
 // WebSocket 健康检查
 app.get('/api/ws-status', (req, res) => {
   res.json({
