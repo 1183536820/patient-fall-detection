@@ -19,3 +19,11 @@ __pycache__/
 packages/
 .DS_Store
 Thumbs.db
+*.onnx
+*.torchscript
+*.rknn
+*.whl
+*.so
+rknn-toolkit2*/
+.claude/
+server/logs/*.log

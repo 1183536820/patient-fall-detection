@@ -2,7 +2,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import { useDetectionStore } from '../stores/detection'
 
 interface WebSocketMessage {
-  type: 'connection' | 'analysis_started' | 'fall_detected' | 'high_risk_detected' | 'detection_progress' | 'fall_detected_during_analysis' | 'error'
+  type: 'connection' | 'analysis_started' | 'fall_detected' | 'high_risk_detected' | 'detection_progress' | 'fall_detected_during_analysis' | 'fall_alert' | 'error'
   message?: string
   videoId?: string
   event?: {
@@ -14,6 +14,9 @@ interface WebSocketMessage {
   }
   timestamp: number
   progress?: number
+  source?: string
+  device?: string
+  room?: string
 }
 
 interface UseWebSocketOptions {
@@ -153,7 +156,18 @@ export function useWebSocket(options: UseWebSocketOptions = {}) {
           message: message.message || '检测到患者跌倒！'
         })
         break
-        
+
+      case 'fall_alert':
+        console.log('[WebSocket] 收到香橙派跌倒报警:', message)
+        const roomInfo = message.room ? ` ${message.room}室` : ''
+        const deviceInfo = message.device ? `[${message.device}]` : ''
+        detectionStore.addAlert({
+          level: 'emergency',
+          title: '⚠️ 香橙派跌倒报警',
+          message: `${deviceInfo}${roomInfo} 检测到患者跌倒！`
+        })
+        break
+
       case 'error':
         console.error('[WebSocket] 服务器错误:', message.message)
         break

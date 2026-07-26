@@ -1161,32 +1161,40 @@ const saveRecordings = () => {
 
 // 切换摄像头
 const switchCamera = async (index: number) => {
-  if (index === currentCamera.value || !isDetecting.value) return
-  
-  currentCamera.value = index
-  
-  if (stream) {
-    stream.getTracks().forEach(track => track.stop())
-    stream = null
-  }
-  
-  try {
-    const deviceId = cameras.value[index]?.deviceId
-    if (deviceId) {
-      stream = await navigator.mediaDevices.getUserMedia({
-        video: { deviceId: { exact: deviceId } }
-      })
-      currentStream.value = stream
-      
-      if (videoRef.value) {
-        videoRef.value.srcObject = stream
-      }
-      
-      console.log(`切换到摄像头: ${cameras.value[index].name}`)
+  if (index === currentCamera.value) return
+
+  // 如果正在检测中，切换摄像头需要停止旧流、启动新流
+  if (isDetecting.value) {
+    currentCamera.value = index
+
+    if (stream) {
+      stream.getTracks().forEach(track => track.stop())
+      stream = null
     }
-  } catch (error) {
-    console.error('切换摄像头失败:', error)
-    statusText.value = '摄像头切换失败'
+
+    try {
+      const deviceId = cameras.value[index]?.deviceId
+      if (deviceId) {
+        stream = await navigator.mediaDevices.getUserMedia({
+          video: { deviceId: { exact: deviceId } }
+        })
+        currentStream.value = stream
+
+        if (videoRef.value) {
+          videoRef.value.srcObject = stream
+        }
+
+        console.log(`切换到摄像头: ${cameras.value[index].name}`)
+        statusText.value = '检测中'
+      }
+    } catch (error) {
+      console.error('切换摄像头失败:', error)
+      statusText.value = '摄像头切换失败'
+    }
+  } else {
+    // 未检测时，只切换选择的索引，等待用户点击"开始检测"
+    currentCamera.value = index
+    console.log(`已选择摄像头: ${cameras.value[index].name}`)
   }
 }
 
@@ -1221,12 +1229,18 @@ const alertDetails = computed(() => {
   }
 })
 
-// 监听警报自动关闭
+// 监听警报自动关闭和音效
 watch(currentAlert, (newAlert) => {
   if (newAlert && newAlert.level === 'warning') {
     setTimeout(() => {
       detectionStore.clearAlerts()
     }, 3000)
+  }
+  if (newAlert && newAlert.level === 'emergency') {
+    // 来自香橙派MQTT或本地检测的紧急告警都播放音效
+    if (!detectionStore.isMuted) {
+      playAlertSound('emergency', 1500)
+    }
   }
 }, { immediate: true })
 

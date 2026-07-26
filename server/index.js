@@ -16,6 +16,7 @@ import { initMysqlDb, getAllPatients, getPatientById, createPatient, updatePatie
 import { VIDEO_REPORT_SYSTEM_PROMPT, buildVideoReportUserPrompt } from './prompts.js'
 import logger, { logInfo, logError, logWarn } from './utils/logger.js'
 import { getServerLogs, getLogFiles } from './utils/logs.js'
+import { startMqttBroker } from './mqtt_bridge.js'
 
 // 加载环境变量
 dotenv.config()
@@ -2167,6 +2168,9 @@ async function startServer() {
       console.log(`数据库类型: ${useMysql ? 'MySQL' : 'JSON'}`);
       
       startDetectionProcess();
+
+      // 启动 MQTT 代理（供香橙派连接报警）
+      startMqttBroker(broadcast).catch(e => console.error('[MQTT] 启动错误:', e.message));
     });
     
     httpServer.on('error', (error) => {
