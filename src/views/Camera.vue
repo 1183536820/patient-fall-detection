@@ -1286,20 +1286,22 @@ const loadRecordings = () => {
 
 .camera-header {
   text-align: center;
-  margin-bottom: 2rem;
-  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.2rem;
   border-bottom: 1px solid var(--border-color);
   position: relative;
 }
 
 .camera-header h2 {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
+  font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
+  letter-spacing: -0.02em;
 }
 
 .camera-header p {
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--text-secondary);
 }
 
@@ -1308,32 +1310,39 @@ const loadRecordings = () => {
   top: 0;
   right: 0;
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 .view-mode-button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: 6px;
-  padding: 0.5rem;
-  font-size: 1.2rem;
+  border-radius: var(--radius-sm);
+  font-size: 1.1rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .view-mode-button:hover {
-  background: var(--accent-color);
+  background: var(--accent-light);
   border-color: var(--accent-color);
-  color: white;
+  color: var(--accent-color);
+  transform: scale(1.05);
 }
 
 /* 摄像头选择 */
 .camera-selector {
-  background: var(--bg-card);
-  border-radius: 10px;
-  padding: 1.2rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 1.2rem 1.5rem;
   margin-bottom: 1.5rem;
-  box-shadow: 0 2px 4px var(--shadow);
+  box-shadow: var(--glass-shadow);
 }
 
 .camera-selector-header {
@@ -1344,71 +1353,76 @@ const loadRecordings = () => {
 }
 
 .camera-selector-header h3 {
-  font-size: 1.1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
   color: var(--text-primary);
   margin: 0;
 }
 
 .refresh-cameras-button {
-  padding: 0.4rem 0.8rem;
+  padding: 0.35rem 0.8rem;
   border: 1px solid var(--border-color);
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   background: var(--bg-secondary);
   color: var(--text-secondary);
   cursor: pointer;
-  font-size: 0.85rem;
-  transition: all 0.3s ease;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
 .refresh-cameras-button:hover {
   border-color: var(--accent-color);
   color: var(--accent-color);
+  background: var(--accent-light);
 }
 
 .camera-list {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.4rem;
 }
 
 .camera-item {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  padding: 0.7rem 1rem;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
+  gap: 0.7rem;
+  padding: 0.6rem 1rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
   background: var(--bg-secondary);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .camera-item:hover {
   border-color: var(--accent-color);
-  background: rgba(74, 144, 226, 0.05);
+  background: var(--accent-light);
+  transform: translateX(2px);
 }
 
 .camera-item.active {
   border-color: var(--accent-color);
-  background: rgba(74, 144, 226, 0.08);
+  background: var(--accent-light);
   box-shadow: 0 0 0 1px var(--accent-color);
 }
 
 .camera-item.disabled {
-  opacity: 0.5;
+  opacity: 0.4;
   cursor: not-allowed;
+  transform: none;
 }
 
 .camera-status-dot {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   flex-shrink: 0;
 }
 
 .camera-status-dot.online {
   background: var(--success-color);
-  box-shadow: 0 0 4px var(--success-color);
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.4);
 }
 
 .camera-status-dot.offline {
@@ -1417,7 +1431,8 @@ const loadRecordings = () => {
 
 .camera-name {
   flex: 1;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  font-weight: 500;
   color: var(--text-primary);
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1425,11 +1440,12 @@ const loadRecordings = () => {
 }
 
 .camera-active-badge {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   padding: 0.15rem 0.5rem;
   background: var(--success-color);
   color: white;
   border-radius: 10px;
+  font-weight: 600;
   flex-shrink: 0;
 }
 
@@ -1437,7 +1453,7 @@ const loadRecordings = () => {
   text-align: center;
   padding: 1.5rem;
   color: var(--text-muted);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 /* 监控区域 */
@@ -1449,11 +1465,16 @@ const loadRecordings = () => {
   position: relative;
   width: 100%;
   max-width: 800px;
-  margin: 0 auto 1.5rem;
+  margin: 0 auto 1.2rem;
   background: #000;
-  border-radius: 10px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: 0 4px 12px var(--shadow);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+.video-container:has(.detection-overlay .emergency) {
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.3), 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .video-container video,
@@ -1473,105 +1494,113 @@ const loadRecordings = () => {
 /* 检测信息叠加层 */
 .detection-overlay {
   position: absolute;
-  top: 1rem;
-  left: 1rem;
+  top: 0.8rem;
+  left: 0.8rem;
   background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
   color: white;
-  padding: 0.8rem;
-  border-radius: 6px;
-  font-size: 0.9rem;
+  padding: 0.6rem 0.9rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .overlay-item {
-  margin-bottom: 0.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.8);
 }
 
-.overlay-item:last-child {
-  margin-bottom: 0;
+.overlay-item span:first-child {
+  opacity: 0.6;
 }
 
 /* 录制状态指示器 */
 .recording-indicator {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: rgba(220, 53, 69, 0.9);
+  top: 0.8rem;
+  right: 0.8rem;
+  background: rgba(239, 68, 68, 0.9);
+  backdrop-filter: blur(8px);
   color: white;
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 0.9rem;
   border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 500;
+  font-size: 0.75rem;
+  font-weight: 600;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  animation: pulse 1s infinite;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.3);
 }
 
 .recording-indicator.grid {
-  top: 0.5rem;
-  right: 0.5rem;
-  padding: 0.3rem 0.6rem;
-  font-size: 0.7rem;
+  top: 0.4rem;
+  right: 0.4rem;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.65rem;
 }
 
 .recording-dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: white;
   animation: blink 1s infinite;
 }
 
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(220, 53, 69, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
-  }
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
 }
 
-@keyframes blink {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.4); }
+  70% { box-shadow: 0 0 0 8px rgba(220, 53, 69, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
 }
 
 /* 控制按钮 */
 .controls {
   display: flex;
-  gap: 1rem;
+  gap: 0.6rem;
   justify-content: center;
   flex-wrap: wrap;
 }
 
 .control-button {
-  padding: 0.8rem 1.5rem;
+  padding: 0.65rem 1.4rem;
   border: none;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  font-size: 1rem;
-  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .control-button:disabled {
-  opacity: 0.6;
+  opacity: 0.4;
   cursor: not-allowed;
+  transform: none !important;
 }
 
 .control-button.primary {
   background: var(--accent-color);
   color: white;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
 }
 
 .control-button.primary:hover:not(:disabled) {
   background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
 }
 
 .control-button.secondary {
@@ -1581,26 +1610,31 @@ const loadRecordings = () => {
 
 .control-button.secondary:hover:not(:disabled) {
   background: var(--text-secondary);
+  transform: translateY(-1px);
 }
 
 .control-button.success {
   background: var(--success-color);
   color: white;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
 }
 
 .control-button.success:hover:not(:disabled) {
-  background: #218838;
+  background: #059669;
+  transform: translateY(-1px);
 }
 
 .control-button.skeleton {
-  background: #6f42c1;
+  background: #7c3aed;
   color: white;
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);
 }
 
 .control-button.skeleton:hover:not(:disabled),
 .control-button.skeleton.active {
-  background: #5a32a3;
-  box-shadow: 0 0 0 2px rgba(111, 66, 193, 0.4);
+  background: #6d28d9;
+  transform: translateY(-1px);
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.4);
 }
 
 /* 宫格模式 */
@@ -1612,24 +1646,24 @@ const loadRecordings = () => {
 .grid-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  gap: 0.8rem;
   max-width: 1000px;
   margin: 0 auto;
 }
 
 .grid-item {
   background: #000;
-  border-radius: 10px;
+  border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: 0 4px 12px var(--shadow);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
   aspect-ratio: 16/9;
 }
 
 .grid-item:hover {
   transform: scale(1.02);
-  box-shadow: 0 8px 20px var(--shadow-hover);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
 .grid-video-container {
@@ -1655,17 +1689,18 @@ const loadRecordings = () => {
 
 .grid-overlay {
   position: absolute;
-  top: 0.5rem;
-  left: 0.5rem;
-  right: 0.5rem;
+  top: 0.4rem;
+  left: 0.4rem;
+  right: 0.4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
   color: white;
-  padding: 0.3rem 0.6rem;
+  padding: 0.25rem 0.6rem;
   border-radius: 4px;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
 }
 
 .grid-camera-name {
@@ -1673,9 +1708,10 @@ const loadRecordings = () => {
 }
 
 .grid-status {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   padding: 0.1rem 0.4rem;
   border-radius: 3px;
+  font-weight: 600;
 }
 
 .grid-status.normal {
@@ -1695,27 +1731,31 @@ const loadRecordings = () => {
 /* 浮动控制按钮 */
 .floating-controls {
   position: absolute;
-  bottom: 1rem;
-  right: 1rem;
+  bottom: 0.8rem;
+  right: 0.8rem;
   display: flex;
-  gap: 0.5rem;
+  gap: 0.4rem;
   z-index: 10;
 }
 
 .floating-button {
-  padding: 0.8rem 1.2rem;
+  padding: 0.6rem 1rem;
   border: none;
   border-radius: 50px;
   cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: 500;
-  box-shadow: 0 4px 12px var(--shadow);
-  transition: all 0.3s ease;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
 }
 
 .floating-button:disabled {
-  opacity: 0.6;
+  opacity: 0.4;
   cursor: not-allowed;
+  transform: none !important;
 }
 
 .floating-button.primary {
@@ -1724,27 +1764,28 @@ const loadRecordings = () => {
 }
 
 .floating-button.primary:hover:not(:disabled) {
-  background: #c82333;
+  background: #dc2626;
   transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.3);
 }
 
 .floating-button.secondary {
-  background: var(--text-muted);
+  background: rgba(100, 116, 139, 0.8);
   color: white;
 }
 
 .floating-button.secondary:hover:not(:disabled) {
-  background: var(--text-secondary);
+  background: rgba(71, 85, 105, 0.9);
   transform: translateY(-2px);
 }
 
 .floating-button.skeleton {
-  background: #6f42c1;
+  background: #7c3aed;
   color: white;
   font-size: 1rem;
-  padding: 0.8rem;
-  width: 44px;
-  height: 44px;
+  padding: 0.6rem;
+  width: 38px;
+  height: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1753,18 +1794,21 @@ const loadRecordings = () => {
 
 .floating-button.skeleton:hover:not(:disabled),
 .floating-button.skeleton.active {
-  background: #5a32a3;
+  background: #6d28d9;
   transform: translateY(-2px);
 }
 
 /* 状态面板 */
 .status-panel {
-  background: var(--bg-card);
-  border-radius: 10px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 4px var(--shadow);
-  margin-bottom: 2rem;
-  border-left: 4px solid var(--accent-color);
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 1.2rem 1.5rem;
+  box-shadow: var(--glass-shadow);
+  margin-bottom: 1.5rem;
+  border-left: 3px solid var(--accent-color);
+  transition: border-left-color 0.3s;
 }
 
 .status-panel.normal {
@@ -1777,38 +1821,52 @@ const loadRecordings = () => {
 
 .status-panel.emergency {
   border-left-color: var(--danger-color);
+  animation: glowPulse 1s infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.15), var(--glass-shadow); }
+  50% { box-shadow: 0 0 20px rgba(239, 68, 68, 0.1), var(--glass-shadow); }
 }
 
 .status-panel h3 {
-  font-size: 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 1rem;
 }
 
 .status-info {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.6rem;
 }
 
 .status-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.8rem;
+  padding: 0.6rem 0.8rem;
   background: var(--bg-secondary);
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
+  transition: background-color 0.2s;
+}
+
+.status-item:hover {
+  background: var(--bg-card-hover);
 }
 
 .status-label {
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 500;
 }
 
 .status-value {
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-primary);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
 }
 
 /* 录制视频 */
@@ -1817,37 +1875,51 @@ const loadRecordings = () => {
 }
 
 .recordings h3 {
-  font-size: 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .recordings-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0.8rem;
 }
 
 .recording-card {
-  background: var(--bg-card);
-  border-radius: 10px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 4px var(--shadow);
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 1.2rem 1.5rem;
+  box-shadow: var(--glass-shadow);
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.8rem;
+  transition: all 0.2s ease;
+}
+
+.recording-card:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--shadow-hover);
 }
 
 .recording-info h4 {
-  font-size: 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
 }
 
 .recording-info p {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--text-secondary);
-  margin: 0.2rem 0;
+  margin: 0.15rem 0;
 }
 
 .recording-actions {
@@ -1858,12 +1930,13 @@ const loadRecordings = () => {
 
 .action-button {
   flex: 1;
-  padding: 0.6rem;
+  padding: 0.5rem;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  font-size: 0.85rem;
-  transition: all 0.3s ease;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
 }
 
 .action-button.play {
@@ -1876,12 +1949,13 @@ const loadRecordings = () => {
 }
 
 .action-button.delete {
-  background: var(--danger-color);
-  color: white;
+  background: var(--danger-light);
+  color: var(--danger-color);
 }
 
 .action-button.delete:hover {
-  background: #c82333;
+  background: var(--danger-color);
+  color: white;
 }
 
 /* 响应式设计 */
@@ -1890,44 +1964,33 @@ const loadRecordings = () => {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .control-button {
     width: 100%;
     max-width: 300px;
+    justify-content: center;
   }
-  
+
   .grid-container {
     grid-template-columns: 1fr;
   }
-  
+
   .status-info {
     grid-template-columns: 1fr;
   }
-  
+
   .recordings-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .floating-controls {
     bottom: 0.5rem;
     right: 0.5rem;
   }
-  
-  .floating-button {
-    padding: 0.6rem 1rem;
-    font-size: 0.8rem;
-  }
-}
 
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(220, 53, 69, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+  .floating-button {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
   }
 }
 </style>
