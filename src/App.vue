@@ -538,12 +538,10 @@ body {
 /* 左侧侧边栏 */
 .sidebar {
   width: 250px;
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  box-shadow: var(--glass-shadow);
+  box-shadow: 0 1px 3px var(--shadow);
   padding: 1.5rem;
   transition: all 0.3s ease;
 }
@@ -611,12 +609,10 @@ body {
 /* 右侧数据栏 */
 .data-panel {
   width: 300px;
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  box-shadow: var(--glass-shadow);
+  box-shadow: 0 1px 3px var(--shadow);
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
