@@ -1625,16 +1625,16 @@ const loadRecordings = () => {
 }
 
 .control-button.skeleton {
-  background: #7c3aed;
+  background: var(--accent-color);
   color: white;
-  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);
+  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.3);
 }
 
 .control-button.skeleton:hover:not(:disabled),
 .control-button.skeleton.active {
-  background: #6d28d9;
+  background: var(--accent-hover);
   transform: translateY(-1px);
-  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.4);
+  box-shadow: 0 0 0 2px var(--accent-glow);
 }
 
 /* 宫格模式 */
@@ -1780,7 +1780,7 @@ const loadRecordings = () => {
 }
 
 .floating-button.skeleton {
-  background: #7c3aed;
+  background: var(--accent-color);
   color: white;
   font-size: 1rem;
   padding: 0.6rem;
@@ -1794,7 +1794,7 @@ const loadRecordings = () => {
 
 .floating-button.skeleton:hover:not(:disabled),
 .floating-button.skeleton.active {
-  background: #6d28d9;
+  background: var(--accent-hover);
   transform: translateY(-2px);
 }
 

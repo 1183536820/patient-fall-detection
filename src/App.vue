@@ -346,18 +346,18 @@ watch(() => detectionStore.theme, (newTheme) => {
   --shadow: rgba(0, 0, 0, 0.06);
   --shadow-hover: rgba(0, 0, 0, 0.1);
   --shadow-lg: rgba(0, 0, 0, 0.08);
-  --accent-color: #6366f1;
-  --accent-hover: #4f46e5;
-  --accent-light: rgba(99, 102, 241, 0.1);
-  --accent-glow: rgba(99, 102, 241, 0.25);
+  --accent-color: #0ea5e9;
+  --accent-hover: #0284c7;
+  --accent-light: rgba(14, 165, 233, 0.08);
+  --accent-glow: rgba(14, 165, 233, 0.2);
   --success-color: #10b981;
   --success-light: rgba(16, 185, 129, 0.1);
   --warning-color: #f59e0b;
   --warning-light: rgba(245, 158, 11, 0.1);
   --danger-color: #ef4444;
   --danger-light: rgba(239, 68, 68, 0.1);
-  --info-bg: rgba(99, 102, 241, 0.05);
-  --nav-bg: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
+  --info-bg: rgba(14, 165, 233, 0.05);
+  --nav-bg: linear-gradient(135deg, #0ea5e9 0%, #14b8a6 100%);
   --glass-bg: rgba(255, 255, 255, 0.7);
   --glass-border: rgba(255, 255, 255, 0.3);
   --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
@@ -369,8 +369,8 @@ watch(() => detectionStore.theme, (newTheme) => {
 }
 
 :root[data-theme="dark"] {
-  --bg-primary: #0b1120;
-  --bg-secondary: #0f172a;
+  --bg-primary: #0c1929;
+  --bg-secondary: #0f1d2f;
   --bg-card: #1a2332;
   --bg-card-hover: #1e293b;
   --text-primary: #f1f5f9;
@@ -380,18 +380,18 @@ watch(() => detectionStore.theme, (newTheme) => {
   --shadow: rgba(0, 0, 0, 0.3);
   --shadow-hover: rgba(0, 0, 0, 0.4);
   --shadow-lg: rgba(0, 0, 0, 0.4);
-  --accent-color: #818cf8;
-  --accent-hover: #6366f1;
-  --accent-light: rgba(129, 140, 248, 0.12);
-  --accent-glow: rgba(129, 140, 248, 0.2);
+  --accent-color: #38bdf8;
+  --accent-hover: #0ea5e9;
+  --accent-light: rgba(56, 189, 248, 0.1);
+  --accent-glow: rgba(56, 189, 248, 0.2);
   --success-color: #34d399;
   --success-light: rgba(52, 211, 153, 0.12);
   --warning-color: #fbbf24;
   --warning-light: rgba(251, 191, 36, 0.12);
   --danger-color: #f87171;
   --danger-light: rgba(248, 113, 113, 0.12);
-  --info-bg: rgba(129, 140, 248, 0.08);
-  --nav-bg: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4c1d95 100%);
+  --info-bg: rgba(56, 189, 248, 0.06);
+  --nav-bg: linear-gradient(135deg, #0369a1 0%, #0f766e 100%);
   --glass-bg: rgba(26, 35, 50, 0.7);
   --glass-border: rgba(255, 255, 255, 0.06);
   --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
@@ -438,10 +438,6 @@ body {
   font-size: 1.15rem;
   font-weight: 700;
   letter-spacing: -0.01em;
-  background: linear-gradient(to right, #fff, rgba(255,255,255,0.8));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .nav-info {
