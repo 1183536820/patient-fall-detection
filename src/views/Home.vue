@@ -225,11 +225,11 @@ const trendChartOption = computed(() => {
       boundaryGap: false,
       data: Array.from({ length: 24 }, (_, i) => `${i}:00`),
       axisLabel: {
-        color: '#94a3b8'
+        color: '#666'
       },
       axisLine: {
         lineStyle: {
-          color: '#e2e8f0'
+          color: '#e0e0e0'
         }
       }
     },
@@ -237,16 +237,16 @@ const trendChartOption = computed(() => {
       type: 'value',
       min: 0,
       axisLabel: {
-        color: '#94a3b8'
+        color: '#666'
       },
       axisLine: {
         lineStyle: {
-          color: '#e2e8f0'
+          color: '#e0e0e0'
         }
       },
       splitLine: {
         lineStyle: {
-          color: '#f1f5f9'
+          color: '#f0f0f0'
         }
       }
     },
@@ -258,11 +258,11 @@ const trendChartOption = computed(() => {
         symbol: 'circle',
         symbolSize: 8,
         lineStyle: {
-          color: '#0ea5e9',
+          color: '#4a90e2',
           width: 2
         },
         itemStyle: {
-          color: '#0ea5e9'
+          color: '#4a90e2'
         },
         areaStyle: {
           color: {
@@ -272,8 +272,8 @@ const trendChartOption = computed(() => {
             x2: 0,
             y2: 1,
             colorStops: [
-              { offset: 0, color: 'rgba(14, 165, 233, 0.25)' },
-              { offset: 1, color: 'rgba(14, 165, 233, 0.02)' }
+              { offset: 0, color: 'rgba(74, 144, 226, 0.3)' },
+              { offset: 1, color: 'rgba(74, 144, 226, 0.05)' }
             ]
           }
         },
@@ -349,11 +349,11 @@ const heatmapChartOption = computed(() => {
       type: 'category',
       data: cameraLabels,
       axisLabel: {
-        color: '#94a3b8'
+        color: '#666'
       },
       axisLine: {
         lineStyle: {
-          color: '#e2e8f0'
+          color: '#e0e0e0'
         }
       }
     },
@@ -361,12 +361,12 @@ const heatmapChartOption = computed(() => {
       type: 'category',
       data: Array.from({ length: 24 }, (_, i) => `${i}:00`),
       axisLabel: {
-        color: '#94a3b8',
+        color: '#666',
         fontSize: 10
       },
       axisLine: {
         lineStyle: {
-          color: '#e2e8f0'
+          color: '#e0e0e0'
         }
       }
     },
@@ -383,7 +383,7 @@ const heatmapChartOption = computed(() => {
         color: ['#67c23a', '#e6a23c', '#f56c6c']
       },
       textStyle: {
-        color: '#94a3b8'
+        color: '#666'
       },
       formatter: (value: number) => {
         return value === 0 ? '低' : value === 1 ? '中' : '高'
